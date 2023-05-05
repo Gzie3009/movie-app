@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import MovieComponent from "./MovieComponent";
 const MovieListSection = () => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(1);
@@ -6,7 +7,8 @@ const MovieListSection = () => {
     const response = await fetch("https://api.tvmaze.com/search/shows?q=all");
     const movieData = await response.json();
     setMovies(movieData);
-    setLoading(0)
+    console.log(movieData)
+    setLoading(0);
   };
   useEffect(() => {
     fetchAllMovies();
@@ -44,26 +46,15 @@ const MovieListSection = () => {
             <span className="border-b-2 border-rose-600">Movies : </span>
           </div>
           <div className="px-5 py-14 mx-auto">
-            <div className="flex flex-wrap -m-4">
-              <div className="xl:w-1/4 md:w-1/2 p-4">
-                <div className="bg-rose-50 p-6 rounded-lg">
-                  <img
-                    className="h-40 rounded w-full object-cover object-center mb-6"
-                    src="https://dummyimage.com/720x400"
-                    alt="content"
-                  />
-                  <h3 className="tracking-widest text-indigo-500 text-xs font-medium title-font">
-                    SUBTITLE
-                  </h3>
-                  <h2 className="text-lg text-gray-900 font-medium title-font mb-4">
-                    Chichen Itza
-                  </h2>
-                  <p className="leading-relaxed text-base">
-                    Fingerstache flexitarian street art 8-bit waistcoat.
-                    Distillery hexagon disrupt edison bulbche.
-                  </p>
-                </div>
-              </div>
+            <div className="md:flex flex-wrap -m-4">
+              {movies &&
+                movies.map((movie, index) => {
+                  return (
+                   
+                      <MovieComponent key={index} data={movie.show} />
+             
+                  );
+                })}
             </div>
           </div>
         </section>

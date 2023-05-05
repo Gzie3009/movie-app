@@ -11,7 +11,7 @@ const Routings = () => {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/Movie/:id" element={<MovieDetails />} />
+        <Route path="/movie/:id" element={<MovieDetails />} />
         <Route path="*" element={<Error />} />
       </Routes>
       <Footer />

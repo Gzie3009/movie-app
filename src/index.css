@@ -10,7 +10,6 @@
 .hover-underline-animation {
     display: inline-block;
     position: relative;
-    color: #151617;
   }
   
   .hover-underline-animation:after {
