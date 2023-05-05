@@ -7,7 +7,6 @@ const MovieListSection = () => {
     const response = await fetch("https://api.tvmaze.com/search/shows?q=all");
     const movieData = await response.json();
     setMovies(movieData);
-    console.log(movieData)
     setLoading(0);
   };
   useEffect(() => {
